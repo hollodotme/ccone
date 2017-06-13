@@ -19,6 +19,6 @@ final class UploadImagesRequestHandler implements HandlesPostRequest
 
 	public function handle( ProvidesWriteRequestData $request ) : void
 	{
-		// TODO: Implement handle() method.
+		die( json_encode( [ 'success' => true, 'error' => '' ] ) );
 	}
 }
