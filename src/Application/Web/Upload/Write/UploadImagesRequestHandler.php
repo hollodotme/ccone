@@ -28,7 +28,7 @@ final class UploadImagesRequestHandler implements HandlesPostRequest
 
 		foreach ( $files as $file )
 		{
-			if ( !$file->didUploadSucceed() )
+			if ( !$file->didUploadSucceed() || !preg_match( '#^.+\.(jpe?g|png|gif)$#i', $file->getName() ) )
 			{
 				continue;
 			}
