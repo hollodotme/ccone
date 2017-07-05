@@ -2,3 +2,11 @@
 /.vagrant/
 /vendor/
 /build/logs/
+/public/media/*.jpg
+/public/media/*.jpeg
+/public/media/*.png
+/public/media/*.gif
+/public/media/thumbs/*.jpg
+/public/media/thumbs/*.jpeg
+/public/media/thumbs/*.png
+/public/media/thumbs/*.gif
