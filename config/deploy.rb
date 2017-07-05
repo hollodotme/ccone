@@ -22,16 +22,14 @@ set :shared_dirs, ['public/media']
    set :user, 'deploy'    # Username in the server to SSH to.
    set :port, '22'     	  # SSH port number.
 
-
-
 desc "Deploys the current version to the server."
 task :deploy => :environment do
   deploy do
     # Put things that will set up an empty directory into a fully set-up
     # instance of your project.
     invoke :'git:clone'
-
     invoke :'composer'
+    invoke :'deploy:link_shared_paths'
 
     on :launch do
       invoke :'reload_env'
