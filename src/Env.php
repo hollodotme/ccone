@@ -24,6 +24,22 @@ final class Env
 		return $this->pool[ $key ];
 	}
 
+	public function getSession() : Session
+	{
+		return $this->getSharedInstance(
+			'session',
+			function ()
+			{
+				if ( session_status() !== PHP_SESSION_ACTIVE )
+				{
+					session_start();
+				}
+
+				return new Session( $_SESSION );
+			}
+		);
+	}
+
 	public function getTemplateRenderer() : \Twig_Environment
 	{
 		return $this->getSharedInstance(

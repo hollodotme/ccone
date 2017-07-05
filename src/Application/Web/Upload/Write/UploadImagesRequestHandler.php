@@ -5,6 +5,7 @@
 
 namespace hollodotme\CCOne\Application\Web\Upload\Write;
 
+use hollodotme\CCOne\Application\Traits\AuthChecking;
 use hollodotme\CCOne\Traits\EnvInjecting;
 use IceHawk\IceHawk\Interfaces\HandlesPostRequest;
 use IceHawk\IceHawk\Interfaces\ProvidesUploadedFileData;
@@ -18,9 +19,12 @@ use Intervention\Image\ImageManager;
 final class UploadImagesRequestHandler implements HandlesPostRequest
 {
 	use EnvInjecting;
+	use AuthChecking;
 
 	public function handle( ProvidesWriteRequestData $request ) : void
 	{
+		$this->checkAuth( $this->getEnv()->getSession() );
+
 		$input = $request->getInput();
 		$files = $input->getFiles( 'files' );
 

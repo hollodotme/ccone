@@ -353,3 +353,64 @@ img.img-responsive {
 .text-center {
 	text-align: center;
 }
+
+#loginForm {
+	text-align: center;
+
+}
+
+#loginForm > label {
+	font-family: frente_h1regular, Arial, Helvetica, Times, serif;
+	font-size: 48px;
+	line-height: 50px;
+}
+
+#loginForm > input {
+	border: 1px solid #dad1ca;
+	border-radius: 5px;
+	font-size: 48px;
+	line-height: 50px;
+	padding: 5px 20px;
+	text-align: center;
+	margin: 0 auto 15px auto;
+	width: 50%;
+
+}
+
+#loginForm button {
+	font-weight: 700;
+	background-color: #ffb3b0;
+	padding: 8px 30px;
+	margin: 20px auto;
+	color: #000000;
+	border: 0;
+	border-radius: 5px;
+	font-size: 72px;
+	font-family: frente_h1regular, Arial, Helvetica, Times, serif;
+}
+
+#loginForm button:hover,
+#loginForm button:focus {
+	background-color: #d58f8c;
+}
+
+#loginForm > .alert {
+	color: #a90707;
+}
+
+#logoutForm button {
+	font-weight: 700;
+	background-color: #dad1ca;
+	padding: 3px 15px;
+	margin: 0 auto;
+	color: #000000;
+	border: 0;
+	border-radius: 5px;
+	font-size: 24px;
+	font-family: frente_h1regular, Arial, Helvetica, Times, serif;
+}
+
+#logoutForm button:hover,
+#logoutForm button:focus {
+	background-color: #beb5ae;
+}

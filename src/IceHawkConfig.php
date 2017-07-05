@@ -9,6 +9,9 @@ use hollodotme\CCOne\Application\FinalResponders\FinalReadResponder;
 use hollodotme\CCOne\Application\FinalResponders\FinalWriteResponder;
 use hollodotme\CCOne\Application\Web\Gallery\Read\ShowGalleryRequestHandler;
 use hollodotme\CCOne\Application\Web\Home\Read\ShowHomeRequestHandler;
+use hollodotme\CCOne\Application\Web\Home\Read\ShowLoginFormRequestHandler;
+use hollodotme\CCOne\Application\Web\Home\Write\LoginRequestHandler;
+use hollodotme\CCOne\Application\Web\Home\Write\LogoutRequestHandler;
 use hollodotme\CCOne\Application\Web\Upload\Read\ShowUploadFormRequestHandler;
 use hollodotme\CCOne\Application\Web\Upload\Write\UploadImagesRequestHandler;
 use hollodotme\CCOne\Traits\EnvInjecting;
@@ -40,6 +43,7 @@ final class IceHawkConfig implements ConfiguresIceHawk
 	{
 		return [
 			new ReadRoute( new Literal( '/' ), new ShowHomeRequestHandler( $this->getEnv() ) ),
+			new ReadRoute( new Literal( '/login' ), new ShowLoginFormRequestHandler( $this->getEnv() ) ),
 			new ReadRoute( new RegExp( '#^/upload-form/?$#' ), new ShowUploadFormRequestHandler( $this->getEnv() ) ),
 			new ReadRoute( new RegExp( '#^/gallery/?$#' ), new ShowGalleryRequestHandler( $this->getEnv() ) ),
 		];
@@ -49,6 +53,8 @@ final class IceHawkConfig implements ConfiguresIceHawk
 	{
 		return [
 			new WriteRoute( new Literal( '/upload' ), new UploadImagesRequestHandler( $this->getEnv() ) ),
+			new WriteRoute( new Literal( '/do-login' ), new LoginRequestHandler( $this->getEnv() ) ),
+			new WriteRoute( new Literal( '/logout' ), new LogoutRequestHandler( $this->getEnv() ) ),
 		];
 	}
 

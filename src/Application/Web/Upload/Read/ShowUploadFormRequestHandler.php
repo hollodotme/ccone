@@ -6,6 +6,7 @@
 namespace hollodotme\CCOne\Application\Web\Upload\Read;
 
 use hollodotme\CCOne\Application\Responses\Page;
+use hollodotme\CCOne\Application\Traits\AuthChecking;
 use hollodotme\CCOne\Traits\EnvInjecting;
 use IceHawk\IceHawk\Interfaces\HandlesGetRequest;
 use IceHawk\IceHawk\Interfaces\ProvidesReadRequestData;
@@ -17,9 +18,12 @@ use IceHawk\IceHawk\Interfaces\ProvidesReadRequestData;
 final class ShowUploadFormRequestHandler implements HandlesGetRequest
 {
 	use EnvInjecting;
+	use AuthChecking;
 
 	public function handle( ProvidesReadRequestData $request ) : void
 	{
+		$this->checkAuth( $this->getEnv()->getSession() );
+
 		$data = [
 
 		];

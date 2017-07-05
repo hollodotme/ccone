@@ -16,6 +16,7 @@ set :keep_releases, 3
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
 #set :shared_paths, ['config/database.yml', 'log']
+set :shared_files, ['config/auth.php']
 set :shared_dirs, ['public/media']
 
 # Optional settings:
