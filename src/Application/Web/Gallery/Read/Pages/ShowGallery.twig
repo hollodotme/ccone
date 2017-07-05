@@ -2,6 +2,25 @@
 
 {% block pageTitle %}Galerie{% endblock %}
 
-{% block content %}
+{% block stylesheets %}
+	<link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+{% endblock %}
 
+{% block content %}
+	<br>
+	<div id="aniimated-thumbnials">
+		{% for thumb, url in thumbs %}
+			<a href="{{ url }}"><img src="{{ thumb }}"></a>
+		{% endfor %}
+	</div>
+	<br>
+{% endblock %}
+
+{% block javaScripts %}
+	<script type="text/javascript" src="/js/lightgallery.min.js"></script>
+	<script type="text/javascript">
+		lightGallery( document.getElementById( 'aniimated-thumbnials' ), {
+			thumbnail: true
+		} );
+	</script>
 {% endblock %}

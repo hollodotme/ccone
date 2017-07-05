@@ -21,9 +21,24 @@ final class ShowGalleryRequestHandler implements HandlesGetRequest
 	public function handle( ProvidesReadRequestData $request ) : void
 	{
 		$data = [
-
+			'thumbs' => $this->getThumbnails(),
 		];
 
 		(new Page( $this->getEnv() ))->respond( 'Gallery/Read/Pages/ShowGallery.twig', $data );
+	}
+
+	private function getThumbnails() : \Generator
+	{
+		$iterator = new \DirectoryIterator( dirname( __DIR__, 5 ) . '/public/media/thumbs' );
+
+		foreach ( $iterator as $item )
+		{
+			if ( !preg_match( '#\.(jpe?g|gif|png)$#', $item->getFilename() ) )
+			{
+				continue;
+			}
+
+			yield "/media/thumbs/{$item->getFilename()}" => "/media/{$item->getFilename()}";
+		}
 	}
 }
