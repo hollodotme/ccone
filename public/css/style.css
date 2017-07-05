@@ -340,3 +340,16 @@ label {
 .box__button:focus {
 	background-color: #d58f8c;
 }
+
+img.img-responsive {
+	max-width: 100%;
+	margin: auto;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-center {
+	text-align: center;
+}
