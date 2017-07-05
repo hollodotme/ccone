@@ -13,6 +13,16 @@
 			<a href="{{ url }}"><img src="{{ thumb }}"></a>
 		{% endfor %}
 	</div>
+	{% if thumbs is empty %}
+		<p class="text-center">
+			Noch keine Bilder hochgeladen.
+		</p>
+		<p class="text-center">
+			<a href="/upload-form">
+				Hier geht's zum Upload!
+			</a>
+		</p>
+	{% endif %}
 	<br>
 {% endblock %}
 

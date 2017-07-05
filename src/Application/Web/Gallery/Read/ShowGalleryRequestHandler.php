@@ -27,10 +27,10 @@ final class ShowGalleryRequestHandler implements HandlesGetRequest
 		(new Page( $this->getEnv() ))->respond( 'Gallery/Read/Pages/ShowGallery.twig', $data );
 	}
 
-	private function getThumbnails() : \Generator
+	private function getThumbnails() : array
 	{
 		$iterator = new \DirectoryIterator( dirname( __DIR__, 5 ) . '/public/media/thumbs' );
-
+		$thumbs   = [];
 		foreach ( $iterator as $item )
 		{
 			if ( !preg_match( '#\.(jpe?g|gif|png)$#', $item->getFilename() ) )
@@ -38,7 +38,11 @@ final class ShowGalleryRequestHandler implements HandlesGetRequest
 				continue;
 			}
 
-			yield "/media/thumbs/{$item->getFilename()}" => "/media/{$item->getFilename()}";
+			$fileName = $item->getFilename();
+
+			$thumbs["/media/thumbs/{$fileName}"] = "/media/{$fileName}";
 		}
+
+		return $thumbs;
 	}
 }
